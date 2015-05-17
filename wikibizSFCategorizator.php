@@ -21,8 +21,10 @@ $wgMessagesDirs['wikibizSFCategorizator'] = __DIR__ . '/i18n';
 $wgAutoloadClasses['wikibizSFCategorizator'] = __DIR__ . '/wikibizSFCategorizator.class.php';
 $wgAutoloadClasses['wikibizSFCategorizatorHooks'] = __DIR__ . '/wikibizSFCategorizator.hooks.php';
 $wgAutoloadClasses['wikibizSFCategorizatorSpecial'] = __DIR__ . '/wikibizSFCategorizator.special.php';
+$wgAutoloadClasses['SFKeywordsTokenInput'] = __DIR__ . '/includes/SF_KeywordsToken.php';
 
 $wgSpecialPages['wikibizSFCategorizator'] = 'wikibizSFCategorizatorSpecial';
 
 
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'wikibizSFCategorizatorHooks::onLoadExtensionSchemaUpdates';
+#$wgHooks['LoadExtensionSchemaUpdates'][] = 'wikibizSFCategorizatorHooks::onLoadExtensionSchemaUpdates';
+$wgHooks['sfFormPrinterSetup'][] = 'wikibizSFCategorizatorHooks::onsfFormPrinterSetup';

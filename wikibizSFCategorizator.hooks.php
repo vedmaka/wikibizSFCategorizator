@@ -17,4 +17,14 @@ class wikibizSFCategorizatorHooks {
 
     }
 
+    /**
+     * @param SFFormPrinter $printer
+     */
+    public static function onsfFormPrinterSetup( $printer ) {
+
+        $printer->registerInputType( 'SFKeywordsTokenInput' );
+        return true;
+
+    }
+
 }
