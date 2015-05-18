@@ -10,17 +10,17 @@ class SFKeywordsTokenInput extends SFTokensInput {
     public static function getHTML( $cur_value, $input_name, $is_mandatory, $is_disabled, $other_args )
     {
 
-        global $wgTitle, $wgOut;
+        global $wgRequest, $wgOut;
 
         $wgOut->addModules('ext.wikibizSFCategorizator.main');
 
         $add = '';
         $text = parent::getHTML($cur_value, $input_name, $is_mandatory, $is_disabled, $other_args);
 
-        //First of all we should determine if this is editing of existing page
-        if( $wgTitle && $wgTitle->exists() ) {
+        //First of all we should determine if this is editing of existing page (VE only!)
+        if( $wgRequest->getVal('target') && Title::newFromText( $wgRequest->getVal('target') )->exists() ) {
             //We are editing exiting page via form
-            $sfc = new wikibizSFCategorizator( $wgTitle );
+            $sfc = new wikibizSFCategorizator( Title::newFromText( $wgRequest->getVal('target') ) );
             $add .= '<div class="wikibizSFKeywordsInput">';
             $add .= '<p>Please review list of keywords extracted from this page text below and select page categories based on your opinion:</p>';
             $add .= '<ul>';
