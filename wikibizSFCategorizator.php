@@ -25,6 +25,13 @@ $wgAutoloadClasses['SFKeywordsTokenInput'] = __DIR__ . '/includes/SF_KeywordsTok
 
 $wgSpecialPages['wikibizSFCategorizator'] = 'wikibizSFCategorizatorSpecial';
 
+$wgResourceModules['ext.wikibizSFCategorizator.main'] = array(
+    'scripts' => 'script.js',
+    'styles' => 'style.css',
+    'localBasePath' => __DIR__,
+    'remoteExtPath' => 'wikibizSFCategorizator',
+    'position' => 'top'
+);
 
 #$wgHooks['LoadExtensionSchemaUpdates'][] = 'wikibizSFCategorizatorHooks::onLoadExtensionSchemaUpdates';
 $wgHooks['sfFormPrinterSetup'][] = 'wikibizSFCategorizatorHooks::onsfFormPrinterSetup';

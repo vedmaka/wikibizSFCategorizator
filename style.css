@@ -1,0 +1,28 @@
+.wikibizSFKeywordsInput {
+    margin: 0 0 10px 0;
+}
+
+.wikibizSFKeywordsInput p {
+    margin-top: 0 !important;
+    padding-top: 0;
+}
+
+.wikibizSFKeywordsInput ul {
+    padding: 0;
+    margin: 0;
+}
+
+.wikibizSFKeywordsInput ul li {
+    display: inline-block;
+    margin: 0 5px 0 0;
+    color: #454545;
+}
+.wikibizSFKeywordsInput ul li span {
+    color: #8a8a8a;
+}
+.wikibizSFKeywordsInput ul li:after {
+    content: ",";
+}
+.wikibizSFKeywordsInput ul li:last-child:after {
+    content: normal !important;
+}

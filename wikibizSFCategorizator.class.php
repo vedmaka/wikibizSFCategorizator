@@ -23,7 +23,20 @@ class wikibizSFCategorizator {
      */
     private $mLimit;
 
+    /**
+     * @var int
+     */
     private $mKeywordMinLength;
+
+    /**
+     * @var string
+     */
+    private $mCleanText;
+
+    /**
+     * @var array[]
+     */
+    private $mStat;
 
     /**
      * @param Title $title
@@ -54,6 +67,7 @@ class wikibizSFCategorizator {
             $stripped = strip_tags($stripped);
             $stripped = preg_replace('/[^a-zA-Z\-0-9\s]/', '', $stripped);
             $stripped = str_replace("\n", ' ', $stripped);
+            $this->mCleanText = $stripped;
             //Break into tags
             $keywords = explode(" ", $stripped);
             $keywords = array_filter($keywords, array($this,'filterArray') );
@@ -66,6 +80,26 @@ class wikibizSFCategorizator {
 
         return false;
 
+    }
+
+    public function getStat() {
+
+        $stat = array();
+        foreach( $this->mKeywords as $keyword ) {
+            $stat[ $keyword ] = substr_count( $this->mCleanText, $keyword );
+        }
+        uasort($stat, array($this, 'sortArray'));
+        $this->mStat = $stat;
+        return $this->mStat;
+
+    }
+
+    private function sortArray( $a, $b ) {
+        if( $a > $b ) {
+            return false;
+        }else{
+            return true;
+        }
     }
 
     private function filterArray( &$item ) {
